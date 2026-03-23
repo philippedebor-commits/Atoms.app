@@ -1,0 +1,24 @@
+2026-03-23 04:47:19,768 - main - INFO - === Logging system initialized ===
+2026-03-23 04:47:19,769 - main - INFO - Log file: logs/app_20260323_044719.log
+2026-03-23 04:47:19,769 - main - INFO - Log level: INFO
+2026-03-23 04:47:19,769 - main - INFO - Timestamp: 20260323_044719
+2026-03-23 04:47:20,603 - main - INFO - Included router: routers.aihub.router
+2026-03-23 04:47:20,624 - main - INFO - Included router: routers.auth.router
+2026-03-23 04:47:20,717 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 04:47:20,719 - main - INFO - Included router: routers.health.router
+2026-03-23 04:47:20,748 - main - INFO - Included router: routers.payments.router
+2026-03-23 04:47:20,762 - main - INFO - Included router: routers.prompt.router
+2026-03-23 04:47:20,865 - main - INFO - Included router: routers.settings.router
+2026-03-23 04:47:20,903 - main - INFO - Included router: routers.storage.router
+2026-03-23 04:47:20,914 - main - INFO - Included router: routers.user.router
+2026-03-23 04:47:20,916 - main - INFO - === Application startup initiated ===
+2026-03-23 04:47:20,916 - services.database - INFO - Ignore creating tables
+2026-03-23 04:47:20,916 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 04:47:20,916 - services.auth - INFO - Ignore initialize admin
+2026-03-23 04:47:20,917 - main - INFO - === Application startup completed successfully ===
+2026-03-23 04:47:24,796 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 04:47:24,797 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 04:47:24,817 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 04:48:36,861 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 04:48:58,152 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 04:53:57,626 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
