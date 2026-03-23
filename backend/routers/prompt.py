@@ -22,8 +22,9 @@ class GeneratePromptRequest(BaseModel):
 
 
 class GeneratePromptResponse(BaseModel):
-    prompt: str
+    success: bool
     dossier_id: int
+    message: str = ""
 
 
 class SendEmailRequest(BaseModel):
@@ -386,9 +387,13 @@ async def generate_prompt(
         dossier = await service.get_by_id(data.dossier_id, user_id=str(current_user.id))
 
         # Send prompt email to admin only (prospect never sees this)
-        await _send_prompt_email(dossier)
+        email_sent = await _send_prompt_email(dossier)
 
-        return GeneratePromptResponse(prompt=prompt, dossier_id=data.dossier_id)
+        return GeneratePromptResponse(
+            success=True,
+            dossier_id=data.dossier_id,
+            message="Prompt généré et envoyé à l'administrateur" if email_sent else "Prompt généré mais email non envoyé",
+        )
     except HTTPException:
         raise
     except Exception as e:

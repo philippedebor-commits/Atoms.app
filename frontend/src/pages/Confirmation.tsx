@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
-import { client } from "@/lib/api";
 import { getAPIBaseURL } from "@/lib/config";
 import { toast } from "sonner";
 import {
@@ -30,14 +29,25 @@ export default function Confirmation() {
 
   useEffect(() => {
     const loadDossier = async () => {
-      if (!dossierId) {
+      if (!dossierId || dossierId === "undefined") {
         navigate("/");
         return;
       }
       try {
-        const res = await client.entities.dossiers.get(dossierId);
-        if (res?.data) {
-          setDossier(res.data);
+        const res = await fetch(
+          `${getAPIBaseURL()}/api/v1/entities/dossiers/${dossierId}`,
+          {
+            credentials: "include",
+            headers: {
+              "App-Host": window.location.host,
+            },
+          }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setDossier(data?.data || data);
+        } else {
+          toast.error("Impossible de charger le dossier");
         }
       } catch {
         toast.error("Impossible de charger le dossier");

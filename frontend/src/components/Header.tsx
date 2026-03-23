@@ -15,23 +15,33 @@ export default function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    let mounted = true;
     const checkAuth = async () => {
       try {
         const res = await client.auth.me();
-        if (res?.data) setUser(res.data);
+        if (mounted && res?.data) setUser(res.data);
       } catch {
-        setUser(null);
+        if (mounted) setUser(null);
       }
     };
     checkAuth();
+    return () => { mounted = false; };
   }, []);
 
   const handleLogin = async () => {
-    await client.auth.toLogin();
+    try {
+      await client.auth.toLogin();
+    } catch {
+      console.warn("Login redirect failed");
+    }
   };
 
   const handleLogout = async () => {
-    await client.auth.logout();
+    try {
+      await client.auth.logout();
+    } catch {
+      // ignore
+    }
     setUser(null);
     navigate("/");
   };

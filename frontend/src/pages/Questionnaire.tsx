@@ -166,19 +166,35 @@ export default function Questionnaire() {
         }
       }
 
-      // Create dossier in DB
-      const dossierRes = await client.entities.dossiers.create({
-        data: {
-          ...formData,
-          file_key: fileKey,
-          payment_status: "pending",
-          status: "submitted",
-          created_at: new Date().toISOString(),
-        },
-      });
+      // Create dossier in DB via direct fetch (more reliable than SDK)
+      const createResponse = await fetch(
+        `${getAPIBaseURL()}/api/v1/entities/dossiers`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            "App-Host": window.location.host,
+          },
+          body: JSON.stringify({
+            ...formData,
+            file_key: fileKey,
+            payment_status: "pending",
+            status: "submitted",
+            created_at: new Date().toISOString(),
+          }),
+        }
+      );
 
-      const dossierId = dossierRes?.data?.id;
+      if (!createResponse.ok) {
+        const errData = await createResponse.json().catch(() => ({}));
+        throw new Error(errData?.detail || `Erreur serveur (${createResponse.status})`);
+      }
+
+      const dossierData = await createResponse.json();
+      const dossierId = dossierData?.id || dossierData?.data?.id;
       if (!dossierId) {
+        console.error("Dossier creation response:", dossierData);
         toast.error("Erreur lors de la création du dossier");
         return;
       }
@@ -194,7 +210,7 @@ export default function Questionnaire() {
               "Content-Type": "application/json",
               "App-Host": window.location.host,
             },
-            body: JSON.stringify({ dossier_id: dossierId }),
+            body: JSON.stringify({ dossier_id: Number(dossierId) }),
           }
         );
       } catch {

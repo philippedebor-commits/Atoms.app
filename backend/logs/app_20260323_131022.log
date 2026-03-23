@@ -1,0 +1,29 @@
+2026-03-23 13:10:22,752 - main - INFO - === Logging system initialized ===
+2026-03-23 13:10:22,753 - main - INFO - Log file: logs/app_20260323_131022.log
+2026-03-23 13:10:22,753 - main - INFO - Log level: INFO
+2026-03-23 13:10:22,753 - main - INFO - Timestamp: 20260323_131022
+2026-03-23 13:10:23,769 - main - INFO - Included router: routers.aihub.router
+2026-03-23 13:10:23,861 - main - INFO - Included router: routers.auth.router
+2026-03-23 13:10:24,069 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 13:10:24,085 - main - INFO - Included router: routers.health.router
+2026-03-23 13:10:24,121 - main - INFO - Included router: routers.payments.router
+2026-03-23 13:10:24,176 - main - INFO - Included router: routers.prompt.router
+2026-03-23 13:10:24,315 - main - INFO - Included router: routers.settings.router
+2026-03-23 13:10:24,389 - main - INFO - Included router: routers.storage.router
+2026-03-23 13:10:24,399 - main - INFO - Included router: routers.user.router
+2026-03-23 13:10:24,400 - main - INFO - === Application startup initiated ===
+2026-03-23 13:10:24,400 - services.database - INFO - Ignore creating tables
+2026-03-23 13:10:24,400 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 13:10:24,400 - services.auth - INFO - Ignore initialize admin
+2026-03-23 13:10:24,401 - main - INFO - === Application startup completed successfully ===
+2026-03-23 13:10:38,858 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 13:10:41,868 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 13:10:41,868 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 13:10:41,878 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:11:13,285 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:11:35,813 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 13:11:38,610 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:12:23,672 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 13:12:42,936 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 13:12:42,936 - services.database - INFO - Database connections closed
+2026-03-23 13:12:42,936 - services.database - DEBUG - [DB_OP] Database close completed in 0.0004s

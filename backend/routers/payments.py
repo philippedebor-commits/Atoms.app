@@ -98,7 +98,7 @@ async def create_payment_session(
             ],
             mode="payment",
             success_url=f"{frontend_host}/payment-success?session_id={{CHECKOUT_SESSION_ID}}",
-            cancel_url=f"{frontend_host}/questionnaire",
+            cancel_url=data.cancel_url or f"{frontend_host}/questionnaire",
             metadata={
                 "dossier_id": str(data.dossier_id),
                 "user_id": str(current_user.id),

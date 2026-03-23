@@ -43,6 +43,9 @@ export default defineConfig(({ mode }) => ({
       },
     },
     watch: { usePolling: true, interval: 600 },
+    hmr: {
+      overlay: false,
+    },
   },
   build: {
     rollupOptions: {

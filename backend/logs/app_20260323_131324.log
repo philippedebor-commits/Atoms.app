@@ -1,0 +1,94 @@
+2026-03-23 13:13:24,690 - main - INFO - === Logging system initialized ===
+2026-03-23 13:13:24,690 - main - INFO - Log file: logs/app_20260323_131324.log
+2026-03-23 13:13:24,690 - main - INFO - Log level: INFO
+2026-03-23 13:13:24,690 - main - INFO - Timestamp: 20260323_131324
+2026-03-23 13:13:25,410 - main - INFO - Included router: routers.aihub.router
+2026-03-23 13:13:25,430 - main - INFO - Included router: routers.auth.router
+2026-03-23 13:13:25,510 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 13:13:25,513 - main - INFO - Included router: routers.health.router
+2026-03-23 13:13:25,544 - main - INFO - Included router: routers.payments.router
+2026-03-23 13:13:25,562 - main - INFO - Included router: routers.prompt.router
+2026-03-23 13:13:25,679 - main - INFO - Included router: routers.settings.router
+2026-03-23 13:13:25,724 - main - INFO - Included router: routers.storage.router
+2026-03-23 13:13:25,733 - main - INFO - Included router: routers.user.router
+2026-03-23 13:13:25,735 - main - INFO - === Application startup initiated ===
+2026-03-23 13:13:25,735 - services.database - INFO - Ignore creating tables
+2026-03-23 13:13:25,735 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 13:13:25,735 - services.auth - INFO - Ignore initialize admin
+2026-03-23 13:13:25,735 - main - INFO - === Application startup completed successfully ===
+2026-03-23 13:13:29,353 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 13:13:29,354 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 13:13:29,364 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:13:40,472 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:13:40,644 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:14:01,629 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:14:01,629 - core.database - DEBUG - [DB_OP] Starting get_db session creation
+2026-03-23 13:14:01,629 - core.database - WARNING - Database session maker not available, attempting lazy initialization...
+2026-03-23 13:14:01,629 - core.database - WARNING - Database not initialized, attempting lazy initialization...
+2026-03-23 13:14:01,629 - core.database - INFO - Starting database initialization...
+2026-03-23 13:14:01,630 - core.config - DEBUG - Read dynamic attribute database_url from environment variable DATABASE_URL
+2026-03-23 13:14:01,630 - core.database - INFO - Normalizing database URL for async compatibility...
+2026-03-23 13:14:01,630 - core.database - INFO - Creating async database engine...
+2026-03-23 13:14:01,631 - core.database - INFO - Using QueuePool with connection pooling for non-Lambda environment
+2026-03-23 13:14:01,674 - core.database - INFO - Database engine created successfully
+2026-03-23 13:14:01,674 - core.database - INFO - Creating async session maker...
+2026-03-23 13:14:01,674 - core.database - INFO - Async session maker created successfully
+2026-03-23 13:14:01,674 - core.database - INFO - Database connection initialized successfully
+2026-03-23 13:14:01,675 - core.database - DEBUG - [DB_OP] Starting create_tables
+2026-03-23 13:14:01,675 - core.database - INFO - 🔧 Starting table creation...
+2026-03-23 13:14:02,984 - core.database - INFO - Tables initialized successfully
+2026-03-23 13:14:02,984 - core.database - DEBUG - [DB_OP] Create tables completed in 1.3098s
+2026-03-23 13:14:03,044 - core.database - INFO - Lazy database initialization completed successfully
+2026-03-23 13:14:03,044 - core.database - DEBUG - [DB_OP] Database session created successfully in 1.4152s
+2026-03-23 13:14:03,045 - routers.dossiers - DEBUG - Creating new dossiers with data: project_name='Philippe' applicant_name='Debor' email='philippedebor@gmail.com' commune='' postal_code='' cadastral_section='' parcel='' land_area='' land_status='' environment='' topography='' vegetation='' access='' destination='' project_type='' lodge_model='' unit_count='' finish_level='' architect_description='' file_key='' layout_disposition='' unit_distance='' vegetation_preservation='' parking='' road_access='' connections='' project_objective='' integration_level='' environmental_commitment='' maximize_acceptance=False generated_prompt=None payment_status='pending' stripe_session_id=None status='submitted' created_at=datetime.datetime(2026, 3, 23, 20, 14, 1, 495000, tzinfo=TzInfo(UTC))
+2026-03-23 13:14:03,914 - services.dossiers - INFO - Created dossiers with id: 9
+2026-03-23 13:14:03,914 - routers.dossiers - INFO - Dossiers created successfully with id: 9
+2026-03-23 13:14:03,915 - core.database - DEBUG - [DB_OP] Database session cleanup after 2.2857s
+2026-03-23 13:14:04,225 - dependencies.auth - DEBUG - Authentication required for request POST /api/v1/prompt/send-prospect-email
+2026-03-23 13:14:04,521 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:14:04,521 - core.database - DEBUG - [DB_OP] Starting get_db session creation
+2026-03-23 13:14:04,521 - core.database - DEBUG - [DB_OP] Database session created successfully in 0.0002s
+2026-03-23 13:14:04,522 - core.database - ERROR - Database session error: 1 validation error:
+  {'type': 'int_parsing', 'loc': ('path', 'id'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}
+
+  File "/workspace/app/backend/routers/dossiers.py", line 251, in get_dossiers
+    GET /api/v1/entities/dossiers/{id}
+Traceback (most recent call last):
+  File "/workspace/app/backend/core/database.py", line 534, in get_db
+    yield session
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 719, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'int_parsing', 'loc': ('path', 'id'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}
+
+  File "/workspace/app/backend/routers/dossiers.py", line 251, in get_dossiers
+    GET /api/v1/entities/dossiers/{id}
+2026-03-23 13:14:04,670 - core.database - DEBUG - [DB_OP] Database session cleanup after 0.1488s
+2026-03-23 13:14:04,672 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:14:04,672 - core.database - ERROR - Failed to create database session: 1 validation error:
+  {'type': 'int_parsing', 'loc': ('path', 'id'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}
+
+  File "/workspace/app/backend/routers/dossiers.py", line 251, in get_dossiers
+    GET /api/v1/entities/dossiers/{id}
+Traceback (most recent call last):
+  File "/workspace/app/backend/core/database.py", line 534, in get_db
+    yield session
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 719, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'int_parsing', 'loc': ('path', 'id'), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'undefined'}
+
+  File "/workspace/app/backend/routers/dossiers.py", line 251, in get_dossiers
+    GET /api/v1/entities/dossiers/{id}
+2026-03-23 13:14:13,101 - dependencies.auth - DEBUG - Authentication required for request POST /api/v1/payment/create_payment_session
+2026-03-23 13:14:16,814 - dependencies.auth - DEBUG - Authentication required for request POST /api/v1/payment/create_payment_session
+2026-03-23 13:15:07,848 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/entities/dossiers/9
+2026-03-23 13:15:41,310 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 13:16:34,861 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 13:16:34,924 - core.database - INFO - Database connection closed and engine disposed
+2026-03-23 13:16:34,924 - services.database - INFO - Database connections closed
+2026-03-23 13:16:34,925 - services.database - DEBUG - [DB_OP] Database close completed in 0.0639s

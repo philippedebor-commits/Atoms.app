@@ -2,6 +2,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary';
 import Index from './pages/Index';
 import AuthCallback from './pages/AuthCallback';
 import AuthError from './pages/AuthError';
@@ -13,22 +14,24 @@ import MyDossiers from './pages/MyDossiers';
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/auth/callback" element={<AuthCallback />} />
-          <Route path="/auth/error" element={<AuthError />} />
-          <Route path="/questionnaire" element={<Questionnaire />} />
-          <Route path="/confirmation/:dossierId" element={<Confirmation />} />
-          <Route path="/payment-success" element={<PaymentSuccess />} />
-          <Route path="/mes-dossiers" element={<MyDossiers />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/auth/error" element={<AuthError />} />
+            <Route path="/questionnaire" element={<Questionnaire />} />
+            <Route path="/confirmation/:dossierId" element={<Confirmation />} />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/mes-dossiers" element={<MyDossiers />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
