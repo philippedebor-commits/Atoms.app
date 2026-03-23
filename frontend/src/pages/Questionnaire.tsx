@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import Header from "@/components/Header";
 import { client } from "@/lib/api";
+import { getAPIBaseURL } from "@/lib/config";
 import { toast } from "sonner";
 import {
   ArrowLeft,
@@ -183,17 +184,33 @@ export default function Questionnaire() {
       }
 
       // Create Stripe Checkout Session via backend API
-      const paymentRes = await client.apiCall.invoke({
-        url: "/api/v1/payment/create_payment_session",
-        method: "POST",
-        data: {
-          dossier_id: dossierId,
-          success_url: `${window.location.origin}/payment-success`,
-          cancel_url: `${window.location.origin}/questionnaire`,
-        },
-      });
+      const token = localStorage.getItem("token");
+      const paymentResponse = await fetch(
+        `${getAPIBaseURL()}/api/v1/payment/create_payment_session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            "App-Host": window.location.host,
+          },
+          body: JSON.stringify({
+            dossier_id: dossierId,
+            success_url: `${window.location.origin}/payment-success`,
+            cancel_url: `${window.location.origin}/questionnaire`,
+          }),
+        }
+      );
 
-      const url = paymentRes?.data?.url;
+      if (!paymentResponse.ok) {
+        const errData = await paymentResponse.json().catch(() => ({}));
+        throw new Error(
+          errData?.detail || `Erreur serveur (${paymentResponse.status})`
+        );
+      }
+
+      const paymentData = await paymentResponse.json();
+      const url = paymentData?.url;
       if (url) {
         window.location.href = url;
       } else {

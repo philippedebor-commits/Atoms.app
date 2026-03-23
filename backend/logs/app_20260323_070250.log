@@ -1,0 +1,26 @@
+2026-03-23 07:02:50,577 - main - INFO - === Logging system initialized ===
+2026-03-23 07:02:50,577 - main - INFO - Log file: logs/app_20260323_070250.log
+2026-03-23 07:02:50,577 - main - INFO - Log level: INFO
+2026-03-23 07:02:50,577 - main - INFO - Timestamp: 20260323_070250
+2026-03-23 07:02:51,268 - main - INFO - Included router: routers.aihub.router
+2026-03-23 07:02:51,287 - main - INFO - Included router: routers.auth.router
+2026-03-23 07:02:51,366 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 07:02:51,368 - main - INFO - Included router: routers.health.router
+2026-03-23 07:02:51,398 - main - INFO - Included router: routers.payments.router
+2026-03-23 07:02:51,410 - main - INFO - Included router: routers.prompt.router
+2026-03-23 07:02:51,517 - main - INFO - Included router: routers.settings.router
+2026-03-23 07:02:51,551 - main - INFO - Included router: routers.storage.router
+2026-03-23 07:02:51,559 - main - INFO - Included router: routers.user.router
+2026-03-23 07:02:51,560 - main - INFO - === Application startup initiated ===
+2026-03-23 07:02:51,560 - services.database - INFO - Ignore creating tables
+2026-03-23 07:02:51,560 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 07:02:51,560 - services.auth - INFO - Ignore initialize admin
+2026-03-23 07:02:51,561 - main - INFO - === Application startup completed successfully ===
+2026-03-23 07:02:56,389 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 07:02:56,389 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 07:02:56,397 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 07:10:48,384 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 07:11:01,363 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 07:13:30,517 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 07:13:30,517 - services.database - INFO - Database connections closed
+2026-03-23 07:13:30,517 - services.database - DEBUG - [DB_OP] Database close completed in 0.0006s

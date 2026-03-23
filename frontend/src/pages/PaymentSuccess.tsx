@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import { client } from "@/lib/api";
+import { getAPIBaseURL } from "@/lib/config";
 import { toast } from "sonner";
 import {
   CheckCircle2,
@@ -29,39 +30,73 @@ export default function PaymentSuccess() {
       }
 
       try {
-        // Verify payment
-        const verifyRes = await client.apiCall.invoke({
-          url: "/api/v1/payment/verify_payment",
-          method: "POST",
-          data: { session_id: sessionId },
-        });
+        const token = localStorage.getItem("token");
+        const headers: Record<string, string> = {
+          "Content-Type": "application/json",
+          "App-Host": window.location.host,
+        };
+        if (token) headers["Authorization"] = `Bearer ${token}`;
 
-        if (verifyRes?.data?.status !== "paid") {
+        // Verify payment
+        const verifyResponse = await fetch(
+          `${getAPIBaseURL()}/api/v1/payment/verify_payment`,
+          {
+            method: "POST",
+            headers,
+            body: JSON.stringify({ session_id: sessionId }),
+          }
+        );
+
+        if (!verifyResponse.ok) {
+          const errData = await verifyResponse.json().catch(() => ({}));
+          throw new Error(
+            errData?.detail || `Erreur serveur (${verifyResponse.status})`
+          );
+        }
+
+        const verifyData = await verifyResponse.json();
+
+        if (verifyData?.status !== "paid") {
           toast.error("Le paiement n'a pas été confirmé");
           setLoading(false);
           return;
         }
 
-        const dId = verifyRes.data.dossier_id;
+        const dId = verifyData.dossier_id;
 
         // Generate prompt (this also auto-sends email to admin)
-        const promptRes = await client.apiCall.invoke({
-          url: "/api/v1/prompt/generate",
-          method: "POST",
-          data: { dossier_id: dId },
-        });
+        const promptResponse = await fetch(
+          `${getAPIBaseURL()}/api/v1/prompt/generate`,
+          {
+            method: "POST",
+            headers,
+            body: JSON.stringify({ dossier_id: dId }),
+          }
+        );
 
-        if (promptRes?.data?.prompt) {
+        if (!promptResponse.ok) {
+          const errData = await promptResponse.json().catch(() => ({}));
+          throw new Error(
+            errData?.detail || `Erreur serveur (${promptResponse.status})`
+          );
+        }
+
+        const promptData = await promptResponse.json();
+
+        if (promptData?.prompt) {
           setSuccess(true);
 
           // Fetch dossier to get project name
           try {
-            const dossierRes = await client.apiCall.invoke({
-              url: `/api/v1/entities/dossiers/${dId}`,
-              method: "GET",
-            });
-            if (dossierRes?.data?.project_name) {
-              setProjectName(dossierRes.data.project_name);
+            const dossierResponse = await fetch(
+              `${getAPIBaseURL()}/api/v1/entities/dossiers/${dId}`,
+              { method: "GET", headers }
+            );
+            if (dossierResponse.ok) {
+              const dossierData = await dossierResponse.json();
+              if (dossierData?.project_name) {
+                setProjectName(dossierData.project_name);
+              }
             }
           } catch {
             // Non-critical, continue

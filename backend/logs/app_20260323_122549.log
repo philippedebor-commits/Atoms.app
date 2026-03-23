@@ -1,0 +1,21 @@
+2026-03-23 12:25:49,079 - main - INFO - === Logging system initialized ===
+2026-03-23 12:25:49,079 - main - INFO - Log file: logs/app_20260323_122549.log
+2026-03-23 12:25:49,080 - main - INFO - Log level: INFO
+2026-03-23 12:25:49,080 - main - INFO - Timestamp: 20260323_122549
+2026-03-23 12:26:01,516 - main - INFO - Included router: routers.aihub.router
+2026-03-23 12:26:01,662 - main - INFO - Included router: routers.auth.router
+2026-03-23 12:26:01,776 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 12:26:01,788 - main - INFO - Included router: routers.health.router
+2026-03-23 12:26:02,421 - main - INFO - Included router: routers.payments.router
+2026-03-23 12:26:02,509 - main - INFO - Included router: routers.prompt.router
+2026-03-23 12:26:02,635 - main - INFO - Included router: routers.settings.router
+2026-03-23 12:26:02,766 - main - INFO - Included router: routers.storage.router
+2026-03-23 12:26:02,839 - main - INFO - Included router: routers.user.router
+2026-03-23 12:26:02,840 - main - INFO - === Application startup initiated ===
+2026-03-23 12:26:02,841 - services.database - INFO - Ignore creating tables
+2026-03-23 12:26:02,841 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 12:26:02,841 - services.auth - INFO - Ignore initialize admin
+2026-03-23 12:26:02,841 - main - INFO - === Application startup completed successfully ===
+2026-03-23 12:26:13,459 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 12:26:13,459 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 12:26:13,851 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
