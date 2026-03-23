@@ -20,3 +20,9 @@
 2026-03-23 05:10:13,486 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
 2026-03-23 05:10:13,497 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
 2026-03-23 05:18:59,097 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 05:27:31,786 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 05:29:38,798 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 05:29:44,727 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 05:29:54,239 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 05:29:54,239 - services.database - INFO - Database connections closed
+2026-03-23 05:29:54,239 - services.database - DEBUG - [DB_OP] Database close completed in 0.0009s

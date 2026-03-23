@@ -182,9 +182,40 @@ export default function Questionnaire() {
         return;
       }
 
-      // Redirect to Stripe Payment Link
-      const stripePaymentLink = `https://buy.stripe.com/test_28EaEW3Evb5MceecZ39oc00?client_reference_id=${dossierId}`;
-      window.location.href = stripePaymentLink;
+      // Create Stripe Checkout Session via backend API
+      const token = (await client.auth.getToken())?.data?.token;
+      if (!token) {
+        toast.error("Session expirée. Veuillez vous reconnecter.");
+        await client.auth.toLogin();
+        return;
+      }
+
+      const apiBase = client.config?.apiBase || "";
+      const paymentRes = await fetch(`${apiBase}/api/v1/payment/create_payment_session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+          "App-Host": window.location.host,
+        },
+        body: JSON.stringify({
+          dossier_id: dossierId,
+          success_url: `${window.location.origin}/payment-success`,
+          cancel_url: `${window.location.origin}/questionnaire`,
+        }),
+      });
+
+      if (!paymentRes.ok) {
+        const errData = await paymentRes.json().catch(() => ({}));
+        throw new Error(errData.detail || "Erreur lors de la création de la session de paiement");
+      }
+
+      const { url } = await paymentRes.json();
+      if (url) {
+        window.location.href = url;
+      } else {
+        toast.error("URL de paiement non reçue. Veuillez réessayer.");
+      }
     } catch (err: any) {
       const detail =
         err?.data?.detail ||
