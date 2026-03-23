@@ -183,34 +183,17 @@ export default function Questionnaire() {
       }
 
       // Create Stripe Checkout Session via backend API
-      const token = (await client.auth.getToken())?.data?.token;
-      if (!token) {
-        toast.error("Session expirée. Veuillez vous reconnecter.");
-        await client.auth.toLogin();
-        return;
-      }
-
-      const apiBase = client.config?.apiBase || "";
-      const paymentRes = await fetch(`${apiBase}/api/v1/payment/create_payment_session`, {
+      const paymentRes = await client.apiCall.invoke({
+        url: "/api/v1/payment/create_payment_session",
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-          "App-Host": window.location.host,
-        },
-        body: JSON.stringify({
+        data: {
           dossier_id: dossierId,
           success_url: `${window.location.origin}/payment-success`,
           cancel_url: `${window.location.origin}/questionnaire`,
-        }),
+        },
       });
 
-      if (!paymentRes.ok) {
-        const errData = await paymentRes.json().catch(() => ({}));
-        throw new Error(errData.detail || "Erreur lors de la création de la session de paiement");
-      }
-
-      const { url } = await paymentRes.json();
+      const url = paymentRes?.data?.url;
       if (url) {
         window.location.href = url;
       } else {
