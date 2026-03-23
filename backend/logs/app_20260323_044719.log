@@ -24,3 +24,7 @@
 2026-03-23 04:53:57,626 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
 2026-03-23 04:55:43,034 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
 2026-03-23 05:04:12,659 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 05:08:05,639 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 05:08:50,915 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 05:08:50,916 - services.database - INFO - Database connections closed
+2026-03-23 05:08:50,918 - services.database - DEBUG - [DB_OP] Database close completed in 0.0034s
