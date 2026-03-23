@@ -10,6 +10,7 @@ import {
   Home,
   CreditCard,
   Mail,
+  ExternalLink,
 } from "lucide-react";
 
 interface DossierInfo {
@@ -20,12 +21,24 @@ interface DossierInfo {
   postal_code: string;
 }
 
+/**
+ * Stripe Payment Link URL.
+ * Create a Payment Link in your Stripe Dashboard (https://dashboard.stripe.com/payment-links)
+ * for 125€ and paste the URL here or set it as VITE_STRIPE_PAYMENT_LINK env var.
+ *
+ * The link supports query params:
+ *   ?client_reference_id=DOSSIER_ID  — to track which dossier was paid
+ *   &prefilled_email=USER_EMAIL       — to prefill the customer email
+ */
+const STRIPE_PAYMENT_LINK =
+  import.meta.env.VITE_STRIPE_PAYMENT_LINK ||
+  "https://buy.stripe.com/test_dRm7sKa2T0r8diiaQV9oc01";
+
 export default function Confirmation() {
   const { dossierId } = useParams<{ dossierId: string }>();
   const navigate = useNavigate();
   const [dossier, setDossier] = useState<DossierInfo | null>(null);
   const [loading, setLoading] = useState(true);
-  const [payLoading, setPayLoading] = useState(false);
 
   useEffect(() => {
     const loadDossier = async () => {
@@ -58,51 +71,16 @@ export default function Confirmation() {
     loadDossier();
   }, [dossierId, navigate]);
 
-  const handlePayment = async () => {
-    if (!dossierId) return;
-    setPayLoading(true);
-    try {
-      const paymentResponse = await fetch(
-        `${getAPIBaseURL()}/api/v1/payment/create_payment_session`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            "App-Host": window.location.host,
-          },
-          body: JSON.stringify({
-            dossier_id: Number(dossierId),
-            success_url: `${window.location.origin}/payment-success`,
-            cancel_url: `${window.location.origin}/confirmation/${dossierId}`,
-          }),
-        }
-      );
-
-      if (!paymentResponse.ok) {
-        const errData = await paymentResponse.json().catch(() => ({}));
-        console.error("Payment session error:", paymentResponse.status, errData);
-        throw new Error(
-          errData?.detail || `Erreur serveur (${paymentResponse.status})`
-        );
-      }
-
-      const paymentData = await paymentResponse.json();
-      if (paymentData?.url) {
-        window.location.href = paymentData.url;
-      } else {
-        toast.error("URL de paiement non reçue. Veuillez réessayer.");
-      }
-    } catch (err: any) {
-      const detail =
-        err?.data?.detail ||
-        err?.response?.data?.detail ||
-        err?.message ||
-        "Une erreur est survenue";
-      toast.error(detail);
-    } finally {
-      setPayLoading(false);
+  /**
+   * Build the Stripe Payment Link with tracking parameters.
+   * client_reference_id lets you identify the dossier in Stripe webhooks/dashboard.
+   */
+  const getPaymentUrl = () => {
+    const url = new URL(STRIPE_PAYMENT_LINK);
+    if (dossierId) {
+      url.searchParams.set("client_reference_id", dossierId);
     }
+    return url.toString();
   };
 
   if (loading) {
@@ -166,11 +144,17 @@ export default function Confirmation() {
                   </span>
                 </div>
               )}
+              <div className="flex justify-between py-2">
+                <span className="text-[#6B7280]">Dossier n°</span>
+                <span className="font-medium text-[#1A1A1A]">
+                  {dossierId}
+                </span>
+              </div>
             </div>
           </div>
         )}
 
-        {/* Payment CTA */}
+        {/* Payment CTA — Direct Stripe Payment Link */}
         <div className="bg-[#F0FDF4] rounded-2xl border border-[#BBF7D0] p-8 mb-8 text-center">
           <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3">
             Recevez votre dossier complet
@@ -180,26 +164,63 @@ export default function Confirmation() {
             professionnel, procédez au paiement sécurisé de{" "}
             <span className="font-bold text-[#2D5016]">125 €</span>.
           </p>
-          <Button
-            onClick={handlePayment}
-            disabled={payLoading}
-            className="bg-[#2D5016] hover:bg-[#4A7C2E] text-white rounded-xl px-10 py-6 text-lg font-semibold shadow-lg transition-all hover:scale-105"
+          <a
+            href={getPaymentUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-[#2D5016] hover:bg-[#4A7C2E] text-white rounded-xl px-10 py-4 text-lg font-semibold shadow-lg transition-all hover:scale-105"
           >
-            {payLoading ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Redirection...
-              </>
-            ) : (
-              <>
-                <CreditCard className="mr-2 h-5 w-5" />
-                Payer 125 € et recevoir mon dossier
-              </>
-            )}
-          </Button>
+            <CreditCard className="h-5 w-5" />
+            Payer 125 € et recevoir mon dossier
+            <ExternalLink className="h-4 w-4 ml-1 opacity-70" />
+          </a>
           <p className="text-xs text-[#9CA3AF] mt-4">
-            Paiement sécurisé par Stripe · Carte bancaire
+            Paiement sécurisé par Stripe · Carte bancaire · Vous serez
+            redirigé vers la page de paiement Stripe
           </p>
+        </div>
+
+        {/* Info about what happens next */}
+        <div className="bg-white rounded-2xl border border-[#E5E2D9] p-6 mb-8">
+          <h3 className="text-lg font-semibold text-[#1A1A1A] mb-4">
+            Comment ça marche ?
+          </h3>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#2D5016] text-white text-sm font-bold flex items-center justify-center">
+                1
+              </span>
+              <p className="text-sm text-[#6B7280]">
+                Cliquez sur le bouton de paiement ci-dessus
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#2D5016] text-white text-sm font-bold flex items-center justify-center">
+                2
+              </span>
+              <p className="text-sm text-[#6B7280]">
+                Complétez le paiement sécurisé sur Stripe (125 €)
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#2D5016] text-white text-sm font-bold flex items-center justify-center">
+                3
+              </span>
+              <p className="text-sm text-[#6B7280]">
+                Notre équipe reçoit une notification et prépare votre dossier
+                complet
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#2D5016] text-white text-sm font-bold flex items-center justify-center">
+                4
+              </span>
+              <p className="text-sm text-[#6B7280]">
+                Vous recevez votre dossier d'avis préalable urbanistique par
+                email
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Secondary Actions */}
