@@ -16,3 +16,10 @@
 2026-03-23 05:09:03,523 - services.mock_data - INFO - Ignore initialize data
 2026-03-23 05:09:03,523 - services.auth - INFO - Ignore initialize admin
 2026-03-23 05:09:03,523 - main - INFO - === Application startup completed successfully ===
+2026-03-23 05:09:18,324 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 05:09:40,721 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 05:09:40,721 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 05:09:40,740 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 05:09:58,065 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 05:09:58,066 - services.database - INFO - Database connections closed
+2026-03-23 05:09:58,066 - services.database - DEBUG - [DB_OP] Database close completed in 0.0008s

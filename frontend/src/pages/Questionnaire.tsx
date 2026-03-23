@@ -182,22 +182,9 @@ export default function Questionnaire() {
         return;
       }
 
-      // Create payment session
-      const paymentRes = await client.apiCall.invoke({
-        url: "/api/v1/payment/create_payment_session",
-        method: "POST",
-        data: {
-          dossier_id: dossierId,
-          success_url: `${window.location.origin}/payment-success`,
-          cancel_url: `${window.location.origin}/questionnaire`,
-        },
-      });
-
-      if (paymentRes?.data?.url) {
-        client.utils.openUrl(paymentRes.data.url);
-      } else {
-        toast.error("Erreur lors de la création du paiement");
-      }
+      // Redirect to Stripe Payment Link
+      const stripePaymentLink = `https://buy.stripe.com/test_28EaEW3Evb5MceecZ39oc00?client_reference_id=${dossierId}`;
+      window.location.href = stripePaymentLink;
     } catch (err: any) {
       const detail =
         err?.data?.detail ||
