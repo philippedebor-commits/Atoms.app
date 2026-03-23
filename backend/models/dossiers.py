@@ -1,0 +1,45 @@
+from core.database import Base
+from sqlalchemy import Boolean, Column, DateTime, Integer, String
+
+
+class Dossiers(Base):
+    __tablename__ = "dossiers"
+    __table_args__ = {"extend_existing": True}
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True, nullable=False)
+    user_id = Column(String, nullable=False)
+    project_name = Column(String, nullable=False)
+    applicant_name = Column(String, nullable=True)
+    email = Column(String, nullable=False)
+    commune = Column(String, nullable=True)
+    postal_code = Column(String, nullable=True)
+    cadastral_section = Column(String, nullable=True)
+    parcel = Column(String, nullable=True)
+    land_area = Column(String, nullable=True)
+    land_status = Column(String, nullable=True)
+    environment = Column(String, nullable=True)
+    topography = Column(String, nullable=True)
+    vegetation = Column(String, nullable=True)
+    access = Column(String, nullable=True)
+    destination = Column(String, nullable=True)
+    project_type = Column(String, nullable=True)
+    lodge_model = Column(String, nullable=True)
+    unit_count = Column(String, nullable=True)
+    finish_level = Column(String, nullable=True)
+    architect_description = Column(String, nullable=True)
+    file_key = Column(String, nullable=True)
+    layout_disposition = Column(String, nullable=True)
+    unit_distance = Column(String, nullable=True)
+    vegetation_preservation = Column(String, nullable=True)
+    parking = Column(String, nullable=True)
+    road_access = Column(String, nullable=True)
+    connections = Column(String, nullable=True)
+    project_objective = Column(String, nullable=True)
+    integration_level = Column(String, nullable=True)
+    environmental_commitment = Column(String, nullable=True)
+    maximize_acceptance = Column(Boolean, nullable=True)
+    generated_prompt = Column(String, nullable=True)
+    payment_status = Column(String, nullable=True)
+    stripe_session_id = Column(String, nullable=True)
+    status = Column(String, nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True)

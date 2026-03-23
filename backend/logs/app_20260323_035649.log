@@ -1,0 +1,25 @@
+2026-03-23 03:56:49,154 - main - INFO - === Logging system initialized ===
+2026-03-23 03:56:49,154 - main - INFO - Log file: logs/app_20260323_035649.log
+2026-03-23 03:56:49,154 - main - INFO - Log level: INFO
+2026-03-23 03:56:49,154 - main - INFO - Timestamp: 20260323_035649
+2026-03-23 03:56:49,844 - main - INFO - Included router: routers.aihub.router
+2026-03-23 03:56:49,870 - main - INFO - Included router: routers.auth.router
+2026-03-23 03:56:49,957 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 03:56:49,959 - main - INFO - Included router: routers.health.router
+2026-03-23 03:56:49,988 - main - INFO - Included router: routers.payments.router
+2026-03-23 03:56:49,999 - main - INFO - Included router: routers.prompt.router
+2026-03-23 03:56:50,111 - main - INFO - Included router: routers.settings.router
+2026-03-23 03:56:50,149 - main - INFO - Included router: routers.storage.router
+2026-03-23 03:56:50,157 - main - INFO - Included router: routers.user.router
+2026-03-23 03:56:50,159 - main - INFO - === Application startup initiated ===
+2026-03-23 03:56:50,159 - services.database - INFO - Ignore creating tables
+2026-03-23 03:56:50,159 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 03:56:50,159 - services.auth - INFO - Ignore initialize admin
+2026-03-23 03:56:50,159 - main - INFO - === Application startup completed successfully ===
+2026-03-23 03:56:53,540 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 03:56:53,541 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 03:56:53,552 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 04:01:50,150 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 04:08:04,979 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 04:08:04,979 - services.database - INFO - Database connections closed
+2026-03-23 04:08:04,980 - services.database - DEBUG - [DB_OP] Database close completed in 0.0007s

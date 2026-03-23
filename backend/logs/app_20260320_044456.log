@@ -1,0 +1,123 @@
+2026-03-20 04:44:56,248 - main - INFO - === Logging system initialized ===
+2026-03-20 04:44:56,249 - main - INFO - Log file: logs/app_20260320_044456.log
+2026-03-20 04:44:56,250 - main - INFO - Log level: INFO
+2026-03-20 04:44:56,250 - main - INFO - Timestamp: 20260320_044456
+2026-03-20 04:44:56,887 - main - INFO - Included router: routers.aihub.router
+2026-03-20 04:44:56,908 - main - INFO - Included router: routers.auth.router
+2026-03-20 04:44:56,985 - main - INFO - Included router: routers.dossiers.router
+2026-03-20 04:44:56,987 - main - INFO - Included router: routers.health.router
+2026-03-20 04:44:57,034 - core.config - DEBUG - Read dynamic attribute stripe_secret_key from environment variable STRIPE_SECRET_KEY
+2026-03-20 04:44:57,043 - main - INFO - Included router: routers.payments.router
+2026-03-20 04:44:57,057 - main - INFO - Included router: routers.prompt.router
+2026-03-20 04:44:57,176 - main - INFO - Included router: routers.settings.router
+2026-03-20 04:44:57,214 - main - INFO - Included router: routers.storage.router
+2026-03-20 04:44:57,222 - main - INFO - Included router: routers.user.router
+2026-03-20 04:44:57,224 - main - INFO - === Application startup initiated ===
+2026-03-20 04:44:57,224 - services.database - INFO - Ignore creating tables
+2026-03-20 04:44:57,224 - services.mock_data - INFO - Ignore initialize data
+2026-03-20 04:44:57,224 - services.auth - INFO - Ignore initialize admin
+2026-03-20 04:44:57,224 - main - INFO - === Application startup completed successfully ===
+2026-03-20 04:45:01,175 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-20 04:45:01,175 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-20 04:45:01,188 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 04:51:28,322 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 04:52:01,501 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 04:53:58,359 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 04:53:58,359 - core.database - DEBUG - [DB_OP] Starting get_db session creation
+2026-03-20 04:53:58,360 - core.database - WARNING - Database session maker not available, attempting lazy initialization...
+2026-03-20 04:53:58,360 - core.database - WARNING - Database not initialized, attempting lazy initialization...
+2026-03-20 04:53:58,360 - core.database - INFO - Starting database initialization...
+2026-03-20 04:53:58,360 - core.config - DEBUG - Read dynamic attribute database_url from environment variable DATABASE_URL
+2026-03-20 04:53:58,360 - core.database - INFO - Normalizing database URL for async compatibility...
+2026-03-20 04:53:58,361 - core.database - INFO - Creating async database engine...
+2026-03-20 04:53:58,362 - core.database - INFO - Using QueuePool with connection pooling for non-Lambda environment
+2026-03-20 04:53:58,420 - core.database - INFO - Database engine created successfully
+2026-03-20 04:53:58,420 - core.database - INFO - Creating async session maker...
+2026-03-20 04:53:58,420 - core.database - INFO - Async session maker created successfully
+2026-03-20 04:53:58,421 - core.database - INFO - Database connection initialized successfully
+2026-03-20 04:53:58,421 - core.database - DEBUG - [DB_OP] Starting create_tables
+2026-03-20 04:53:58,421 - core.database - INFO - 🔧 Starting table creation...
+2026-03-20 04:54:00,126 - core.database - INFO - Tables initialized successfully
+2026-03-20 04:54:00,127 - core.database - DEBUG - [DB_OP] Create tables completed in 1.7059s
+2026-03-20 04:54:00,187 - core.database - INFO - Lazy database initialization completed successfully
+2026-03-20 04:54:00,187 - core.database - DEBUG - [DB_OP] Database session created successfully in 1.8279s
+2026-03-20 04:54:00,188 - routers.dossiers - DEBUG - Creating new dossiers with data: project_name='Debor' applicant_name='Debor' email='philippedebor@gmail.com' commune='Liege' postal_code='4030' cadastral_section='' parcel='' land_area='300' land_status='proprietaire' environment='rural' topography='legere_pente' vegetation='' access='' destination='maison_habitation' project_type='catalogue' lodge_model='confort' unit_count='1' finish_level='' architect_description='' file_key='' layout_disposition='' unit_distance='' vegetation_preservation='' parking='1 gravier' road_access='' connections='' project_objective='' integration_level='eleve' environmental_commitment='' maximize_acceptance=True generated_prompt=None payment_status='pending' stripe_session_id=None status='draft' created_at=datetime.datetime(2026, 3, 20, 11, 53, 58, 186000, tzinfo=TzInfo(UTC))
+2026-03-20 04:54:01,060 - services.dossiers - INFO - Created dossiers with id: 1
+2026-03-20 04:54:01,060 - routers.dossiers - INFO - Dossiers created successfully with id: 1
+2026-03-20 04:54:01,061 - core.database - DEBUG - [DB_OP] Database session cleanup after 2.7017s
+2026-03-20 04:54:01,392 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 04:54:01,392 - core.database - DEBUG - [DB_OP] Starting get_db session creation
+2026-03-20 04:54:01,392 - core.database - DEBUG - [DB_OP] Database session created successfully in 0.0002s
+2026-03-20 04:54:02,657 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2026-03-20 04:54:02,658 - stripe - DEBUG - api_version=2026-02-25.clover message='Post details' post_data=payment_method_types[0]=card&line_items[0][price_data][currency]=eur&line_items[0][price_data][product_data][name]=Dossier+d%27avis+pr%C3%A9alable+urbanistique&line_items[0][price_data][product_data][description]=G%C3%A9n%C3%A9ration+du+prompt+optimis%C3%A9+pour+le+projet+%3A+Debor&line_items[0][price_data][unit_amount]=4900&line_items[0][quantity]=1&mode=payment&success_url=https%3A%2F%2Fvyx5ed-05bfc482d7044d2999d45fad9e991550-preview.app.atoms.dev%2Fpayment-success%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=https%3A%2F%2Fvyx5ed-05bfc482d7044d2999d45fad9e991550-preview.app.atoms.dev%2Fquestionnaire&metadata[dossier_id]=1&metadata[user_id]=975844
+2026-03-20 04:54:02,660 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2026-03-20 04:54:02,769 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 401 342
+2026-03-20 04:54:02,770 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=401
+2026-03-20 04:54:02,770 - stripe - DEBUG - body='{\n  "error": {\n    "message": "You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. \'Authorization: Bearer YOUR_SECRET_KEY\'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.",\n    "type": "invalid_request_error"\n  }\n}\n' message='API response body'
+2026-03-20 04:54:02,771 - stripe - INFO - error_code=None error_message="You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/." error_param=None error_type=invalid_request_error message='Stripe v1 API error received'
+2026-03-20 04:54:02,771 - routers.payments - ERROR - Payment session creation error: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+2026-03-20 04:54:02,771 - core.database - ERROR - Database session error: 500: Échec de la création de la session de paiement: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+Traceback (most recent call last):
+  File "/workspace/app/backend/routers/payments.py", line 62, in create_payment_session
+    session = stripe.checkout.Session.create(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/checkout/_session.py", line 2471, in create
+    cls._static_request(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_resource.py", line 172, in _static_request
+    return _APIRequestor._global_instance().request(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_requestor.py", line 211, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders, api_mode)
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_requestor.py", line 897, in _interpret_response
+    self.handle_error_response(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_requestor.py", line 352, in handle_error_response
+    raise err
+stripe._error.AuthenticationError: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/app/backend/core/database.py", line 534, in get_db
+    yield session
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/app/backend/routers/payments.py", line 101, in create_payment_session
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Échec de la création de la session de paiement: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+2026-03-20 04:54:02,827 - core.database - DEBUG - [DB_OP] Database session cleanup after 1.4344s
+2026-03-20 04:54:02,888 - core.database - ERROR - Failed to create database session: 500: Échec de la création de la session de paiement: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+Traceback (most recent call last):
+  File "/workspace/app/backend/routers/payments.py", line 62, in create_payment_session
+    session = stripe.checkout.Session.create(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/checkout/_session.py", line 2471, in create
+    cls._static_request(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_resource.py", line 172, in _static_request
+    return _APIRequestor._global_instance().request(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_requestor.py", line 211, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders, api_mode)
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_requestor.py", line 897, in _interpret_response
+    self.handle_error_response(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/stripe/_api_requestor.py", line 352, in handle_error_response
+    raise err
+stripe._error.AuthenticationError: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/app/backend/core/database.py", line 534, in get_db
+    yield session
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+  File "/data/chats/05bfc482d7044d2999d45fad9e991550/.cache/python/lib/python3.10/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/app/backend/routers/payments.py", line 101, in create_payment_session
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Échec de la création de la session de paiement: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.
+2026-03-20 05:02:23,227 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-20 05:02:23,229 - core.database - INFO - Database connection closed and engine disposed
+2026-03-20 05:02:23,229 - services.database - INFO - Database connections closed
+2026-03-20 05:02:23,229 - services.database - DEBUG - [DB_OP] Database close completed in 0.0016s

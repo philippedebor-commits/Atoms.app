@@ -1,0 +1,161 @@
+{
+    "title": "dossiers",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User ID"
+        },
+        "project_name": {
+            "type": "string",
+            "description": "Nom du projet"
+        },
+        "applicant_name": {
+            "type": "string",
+            "description": "Nom du demandeur"
+        },
+        "email": {
+            "type": "string",
+            "description": "Email du demandeur"
+        },
+        "commune": {
+            "type": "string",
+            "description": "Commune"
+        },
+        "postal_code": {
+            "type": "string",
+            "description": "Code postal"
+        },
+        "cadastral_section": {
+            "type": "string",
+            "description": "Section cadastrale"
+        },
+        "parcel": {
+            "type": "string",
+            "description": "Parcelle"
+        },
+        "land_area": {
+            "type": "string",
+            "description": "Superficie terrain"
+        },
+        "land_status": {
+            "type": "string",
+            "description": "Statut foncier"
+        },
+        "environment": {
+            "type": "string",
+            "description": "Environnement (rural, forestier, périurbain)"
+        },
+        "topography": {
+            "type": "string",
+            "description": "Topographie"
+        },
+        "vegetation": {
+            "type": "string",
+            "description": "Végétation"
+        },
+        "access": {
+            "type": "string",
+            "description": "Accès"
+        },
+        "destination": {
+            "type": "string",
+            "description": "Destination du projet"
+        },
+        "project_type": {
+            "type": "string",
+            "description": "Type projet (catalogue/architecte)"
+        },
+        "lodge_model": {
+            "type": "string",
+            "description": "Modèle lodge si catalogue"
+        },
+        "unit_count": {
+            "type": "string",
+            "description": "Nombre unités"
+        },
+        "finish_level": {
+            "type": "string",
+            "description": "Niveau finition"
+        },
+        "architect_description": {
+            "type": "string",
+            "description": "Description libre architecte"
+        },
+        "file_key": {
+            "type": "string",
+            "description": "Object key du fichier uploadé"
+        },
+        "layout_disposition": {
+            "type": "string",
+            "description": "Disposition (dispersée, groupée)"
+        },
+        "unit_distance": {
+            "type": "string",
+            "description": "Distance entre unités"
+        },
+        "vegetation_preservation": {
+            "type": "string",
+            "description": "Préservation végétation"
+        },
+        "parking": {
+            "type": "string",
+            "description": "Parking"
+        },
+        "road_access": {
+            "type": "string",
+            "description": "Voirie"
+        },
+        "connections": {
+            "type": "string",
+            "description": "Raccordements"
+        },
+        "project_objective": {
+            "type": "string",
+            "description": "Objectif projet"
+        },
+        "integration_level": {
+            "type": "string",
+            "description": "Niveau intégration"
+        },
+        "environmental_commitment": {
+            "type": "string",
+            "description": "Engagement environnemental"
+        },
+        "maximize_acceptance": {
+            "type": "boolean",
+            "description": "Maximiser chances acceptation"
+        },
+        "generated_prompt": {
+            "type": "string",
+            "description": "Prompt généré pour Gamma"
+        },
+        "payment_status": {
+            "type": "string",
+            "description": "Statut paiement (pending/paid)"
+        },
+        "stripe_session_id": {
+            "type": "string",
+            "description": "Stripe session ID"
+        },
+        "status": {
+            "type": "string",
+            "description": "Statut du dossier (draft/completed)"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date de création"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "project_name",
+        "email"
+    ]
+}

@@ -1,0 +1,22 @@
+2026-03-20 03:07:12,729 - main - INFO - === Logging system initialized ===
+2026-03-20 03:07:12,729 - main - INFO - Log file: logs/app_20260320_030712.log
+2026-03-20 03:07:12,729 - main - INFO - Log level: INFO
+2026-03-20 03:07:12,730 - main - INFO - Timestamp: 20260320_030712
+2026-03-20 03:07:13,491 - main - INFO - Included router: routers.aihub.router
+2026-03-20 03:07:13,510 - main - INFO - Included router: routers.auth.router
+2026-03-20 03:07:13,602 - main - INFO - Included router: routers.dossiers.router
+2026-03-20 03:07:13,604 - main - INFO - Included router: routers.health.router
+2026-03-20 03:07:13,628 - core.config - DEBUG - Read dynamic attribute stripe_secret_key from environment variable STRIPE_SECRET_KEY
+2026-03-20 03:07:13,637 - main - INFO - Included router: routers.payments.router
+2026-03-20 03:07:13,684 - main - INFO - Included router: routers.prompt.router
+2026-03-20 03:07:13,820 - main - INFO - Included router: routers.settings.router
+2026-03-20 03:07:13,861 - main - INFO - Included router: routers.storage.router
+2026-03-20 03:07:13,872 - main - INFO - Included router: routers.user.router
+2026-03-20 03:07:13,873 - main - INFO - === Application startup initiated ===
+2026-03-20 03:07:13,874 - services.database - INFO - Ignore creating tables
+2026-03-20 03:07:13,874 - services.mock_data - INFO - Ignore initialize data
+2026-03-20 03:07:13,874 - services.auth - INFO - Ignore initialize admin
+2026-03-20 03:07:13,874 - main - INFO - === Application startup completed successfully ===
+2026-03-20 03:22:24,976 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-20 03:22:24,977 - services.database - INFO - Database connections closed
+2026-03-20 03:22:24,977 - services.database - DEBUG - [DB_OP] Database close completed in 0.0003s

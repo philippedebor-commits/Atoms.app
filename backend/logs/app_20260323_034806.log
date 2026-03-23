@@ -1,0 +1,28 @@
+2026-03-23 03:48:06,652 - main - INFO - === Logging system initialized ===
+2026-03-23 03:48:06,652 - main - INFO - Log file: logs/app_20260323_034806.log
+2026-03-23 03:48:06,652 - main - INFO - Log level: INFO
+2026-03-23 03:48:06,652 - main - INFO - Timestamp: 20260323_034806
+2026-03-23 03:48:14,296 - main - INFO - Included router: routers.aihub.router
+2026-03-23 03:48:14,362 - main - INFO - Included router: routers.auth.router
+2026-03-23 03:48:14,508 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 03:48:14,514 - main - INFO - Included router: routers.health.router
+2026-03-23 03:48:14,974 - main - INFO - Included router: routers.payments.router
+2026-03-23 03:48:15,022 - main - INFO - Included router: routers.prompt.router
+2026-03-23 03:48:15,126 - main - INFO - Included router: routers.settings.router
+2026-03-23 03:48:15,188 - main - INFO - Included router: routers.storage.router
+2026-03-23 03:48:15,252 - main - INFO - Included router: routers.user.router
+2026-03-23 03:48:15,254 - main - INFO - === Application startup initiated ===
+2026-03-23 03:48:15,255 - services.database - INFO - Ignore creating tables
+2026-03-23 03:48:15,255 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 03:48:15,255 - services.auth - INFO - Ignore initialize admin
+2026-03-23 03:48:15,255 - main - INFO - === Application startup completed successfully ===
+2026-03-23 03:48:41,151 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 03:48:41,151 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 03:48:41,338 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 03:49:17,391 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 03:49:23,763 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 03:50:24,087 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 03:50:24,260 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 03:51:15,493 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 03:51:15,494 - services.database - INFO - Database connections closed
+2026-03-23 03:51:15,494 - services.database - DEBUG - [DB_OP] Database close completed in 0.0003s

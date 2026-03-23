@@ -1,0 +1,26 @@
+2026-03-23 03:06:14,819 - main - INFO - === Logging system initialized ===
+2026-03-23 03:06:14,819 - main - INFO - Log file: logs/app_20260323_030614.log
+2026-03-23 03:06:14,819 - main - INFO - Log level: INFO
+2026-03-23 03:06:14,819 - main - INFO - Timestamp: 20260323_030614
+2026-03-23 03:06:22,698 - main - INFO - Included router: routers.aihub.router
+2026-03-23 03:06:22,743 - main - INFO - Included router: routers.auth.router
+2026-03-23 03:06:22,857 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 03:06:22,874 - main - INFO - Included router: routers.health.router
+2026-03-23 03:06:23,300 - main - INFO - Included router: routers.payments.router
+2026-03-23 03:06:23,361 - main - INFO - Included router: routers.prompt.router
+2026-03-23 03:06:23,440 - main - INFO - Included router: routers.settings.router
+2026-03-23 03:06:23,563 - main - INFO - Included router: routers.storage.router
+2026-03-23 03:06:23,582 - main - INFO - Included router: routers.user.router
+2026-03-23 03:06:23,584 - main - INFO - === Application startup initiated ===
+2026-03-23 03:06:23,584 - services.database - INFO - Ignore creating tables
+2026-03-23 03:06:23,584 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 03:06:23,584 - services.auth - INFO - Ignore initialize admin
+2026-03-23 03:06:23,584 - main - INFO - === Application startup completed successfully ===
+2026-03-23 03:06:27,764 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 03:06:27,765 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 03:06:27,921 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 03:06:32,405 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-03-23 03:06:35,077 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 03:08:27,099 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 03:08:27,099 - services.database - INFO - Database connections closed
+2026-03-23 03:08:27,099 - services.database - DEBUG - [DB_OP] Database close completed in 0.0007s

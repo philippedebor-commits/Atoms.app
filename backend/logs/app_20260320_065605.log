@@ -1,0 +1,65 @@
+2026-03-20 06:56:05,807 - main - INFO - === Logging system initialized ===
+2026-03-20 06:56:05,808 - main - INFO - Log file: logs/app_20260320_065605.log
+2026-03-20 06:56:05,808 - main - INFO - Log level: INFO
+2026-03-20 06:56:05,808 - main - INFO - Timestamp: 20260320_065605
+2026-03-20 06:56:15,849 - main - INFO - Included router: routers.aihub.router
+2026-03-20 06:56:15,905 - main - INFO - Included router: routers.auth.router
+2026-03-20 06:56:16,025 - main - INFO - Included router: routers.dossiers.router
+2026-03-20 06:56:16,057 - main - INFO - Included router: routers.health.router
+2026-03-20 06:56:16,571 - main - INFO - Included router: routers.payments.router
+2026-03-20 06:56:16,617 - main - INFO - Included router: routers.prompt.router
+2026-03-20 06:56:16,729 - main - INFO - Included router: routers.settings.router
+2026-03-20 06:56:16,816 - main - INFO - Included router: routers.storage.router
+2026-03-20 06:56:16,838 - main - INFO - Included router: routers.user.router
+2026-03-20 06:56:16,840 - main - INFO - === Application startup initiated ===
+2026-03-20 06:56:16,841 - services.database - INFO - Ignore creating tables
+2026-03-20 06:56:16,841 - services.mock_data - INFO - Ignore initialize data
+2026-03-20 06:56:16,841 - services.auth - INFO - Ignore initialize admin
+2026-03-20 06:56:16,841 - main - INFO - === Application startup completed successfully ===
+2026-03-20 06:56:21,347 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-20 06:56:21,356 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-20 06:56:21,614 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 06:56:40,574 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 06:57:52,628 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 06:57:52,803 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 06:58:10,546 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 06:58:10,546 - core.database - DEBUG - [DB_OP] Starting get_db session creation
+2026-03-20 06:58:10,546 - core.database - WARNING - Database session maker not available, attempting lazy initialization...
+2026-03-20 06:58:10,546 - core.database - WARNING - Database not initialized, attempting lazy initialization...
+2026-03-20 06:58:10,546 - core.database - INFO - Starting database initialization...
+2026-03-20 06:58:10,547 - core.config - DEBUG - Read dynamic attribute database_url from environment variable DATABASE_URL
+2026-03-20 06:58:10,547 - core.database - INFO - Normalizing database URL for async compatibility...
+2026-03-20 06:58:10,548 - core.database - INFO - Creating async database engine...
+2026-03-20 06:58:10,548 - core.database - INFO - Using QueuePool with connection pooling for non-Lambda environment
+2026-03-20 06:58:10,610 - core.database - INFO - Database engine created successfully
+2026-03-20 06:58:10,611 - core.database - INFO - Creating async session maker...
+2026-03-20 06:58:10,611 - core.database - INFO - Async session maker created successfully
+2026-03-20 06:58:10,611 - core.database - INFO - Database connection initialized successfully
+2026-03-20 06:58:10,611 - core.database - DEBUG - [DB_OP] Starting create_tables
+2026-03-20 06:58:10,611 - core.database - INFO - 🔧 Starting table creation...
+2026-03-20 06:58:11,911 - core.database - INFO - Tables initialized successfully
+2026-03-20 06:58:11,911 - core.database - DEBUG - [DB_OP] Create tables completed in 1.3004s
+2026-03-20 06:58:11,972 - core.database - INFO - Lazy database initialization completed successfully
+2026-03-20 06:58:11,974 - core.database - DEBUG - [DB_OP] Database session created successfully in 1.4276s
+2026-03-20 06:58:11,974 - routers.dossiers - DEBUG - Creating new dossiers with data: project_name='Philippe' applicant_name='Debor' email='philippedebor@gmail.com' commune='' postal_code='' cadastral_section='' parcel='' land_area='' land_status='' environment='' topography='' vegetation='' access='' destination='' project_type='' lodge_model='' unit_count='' finish_level='' architect_description='' file_key='' layout_disposition='' unit_distance='' vegetation_preservation='' parking='' road_access='' connections='' project_objective='' integration_level='' environmental_commitment='' maximize_acceptance=False generated_prompt=None payment_status='pending' stripe_session_id=None status='draft' created_at=datetime.datetime(2026, 3, 20, 13, 58, 10, 397000, tzinfo=TzInfo(UTC))
+2026-03-20 06:58:12,831 - services.dossiers - INFO - Created dossiers with id: 5
+2026-03-20 06:58:12,831 - routers.dossiers - INFO - Dossiers created successfully with id: 5
+2026-03-20 06:58:12,832 - core.database - DEBUG - [DB_OP] Database session cleanup after 2.2859s
+2026-03-20 06:58:13,031 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 06:58:13,032 - core.database - DEBUG - [DB_OP] Starting get_db session creation
+2026-03-20 06:58:13,032 - core.database - DEBUG - [DB_OP] Database session created successfully in 0.0002s
+2026-03-20 06:58:15,593 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2026-03-20 06:58:15,594 - stripe - DEBUG - api_version=2026-02-25.clover message='Post details' post_data=payment_method_types[0]=card&line_items[0][price_data][currency]=eur&line_items[0][price_data][product_data][name]=Dossier+d%27avis+pr%C3%A9alable+urbanistique&line_items[0][price_data][product_data][description]=G%C3%A9n%C3%A9ration+du+prompt+optimis%C3%A9+pour+le+projet+%3A+Philippe&line_items[0][price_data][unit_amount]=4900&line_items[0][quantity]=1&mode=payment&success_url=https%3A%2F%2Fvyx5ed-05bfc482d7044d2999d45fad9e991550-preview.app.atoms.dev%2Fpayment-success%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=https%3A%2F%2Fvyx5ed-05bfc482d7044d2999d45fad9e991550-preview.app.atoms.dev%2Fquestionnaire&metadata[dossier_id]=5&metadata[user_id]=975844
+2026-03-20 06:58:15,599 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2026-03-20 06:58:16,722 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 200 3219
+2026-03-20 06:58:16,723 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+2026-03-20 06:58:16,723 - stripe - DEBUG - body='{\n  "id": "cs_live_a1ZbCfOo18oZFz9v8gNK2tRKPWOaGclAhr4S4QLVff1spksycCygyjC1xS",\n  "object": "checkout.session",\n  "adaptive_pricing": {\n    "enabled": true\n  },\n  "after_expiration": null,\n  "allow_promotion_codes": null,\n  "amount_subtotal": 4900,\n  "amount_total": 4900,\n  "automatic_tax": {\n    "enabled": false,\n    "liability": null,\n    "provider": null,\n    "status": null\n  },\n  "billing_address_collection": null,\n  "branding_settings": {\n    "background_color": "#ffffff",\n    "border_style": "rounded",\n    "button_color": "#0074d4",\n    "display_name": "Tree Milstones",\n    "font_family": "default",\n    "icon": null,\n    "logo": null\n  },\n  "cancel_url": "https://vyx5ed-05bfc482d7044d2999d45fad9e991550-preview.app.atoms.dev/questionnaire",\n  "client_reference_id": null,\n  "client_secret": null,\n  "collected_information": null,\n  "consent": null,\n  "consent_collection": null,\n  "created": 1774015096,\n  "currency": "eur",\n  "currency_conversion": null,\n  "custom_fields": [],\n  "custom_text": {\n    "after_submit": null,\n    "shipping_address": null,\n    "submit": null,\n    "terms_of_service_acceptance": null\n  },\n  "customer": null,\n  "customer_account": null,\n  "customer_creation": "if_required",\n  "customer_details": null,\n  "customer_email": null,\n  "discounts": [],\n  "expires_at": 1774101496,\n  "integration_identifier": null,\n  "invoice": null,\n  "invoice_creation": {\n    "enabled": false,\n    "invoice_data": {\n      "account_tax_ids": null,\n      "custom_fields": null,\n      "description": null,\n      "footer": null,\n      "issuer": null,\n      "metadata": {},\n      "rendering_options": null\n    }\n  },\n  "livemode": true,\n  "locale": null,\n  "metadata": {\n    "dossier_id": "5",\n    "user_id": "975844"\n  },\n  "mode": "payment",\n  "origin_context": null,\n  "payment_intent": null,\n  "payment_link": null,\n  "payment_method_collection": "if_required",\n  "payment_method_configuration_details": null,\n  "payment_method_options": {\n    "card": {\n      "request_three_d_secure": "automatic"\n    }\n  },\n  "payment_method_types": [\n    "card"\n  ],\n  "payment_status": "unpaid",\n  "permissions": null,\n  "phone_number_collection": {\n    "enabled": false\n  },\n  "recovered_from": null,\n  "saved_payment_method_options": null,\n  "setup_intent": null,\n  "shipping_address_collection": null,\n  "shipping_cost": null,\n  "shipping_options": [],\n  "status": "open",\n  "submit_type": null,\n  "subscription": null,\n  "success_url": "https://vyx5ed-05bfc482d7044d2999d45fad9e991550-preview.app.atoms.dev/payment-success?session_id={CHECKOUT_SESSION_ID}",\n  "total_details": {\n    "amount_discount": 0,\n    "amount_shipping": 0,\n    "amount_tax": 0\n  },\n  "ui_mode": "hosted",\n  "url": "https://checkout.stripe.com/c/pay/cs_live_a1ZbCfOo18oZFz9v8gNK2tRKPWOaGclAhr4S4QLVff1spksycCygyjC1xS#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cXdsdWBEZmZqcGtxJz8nZGZmcVo0UTdTTE9VVjNsdX1tZ11BJyknZHVsTmB8Jz8ndW5aaWxzYFowNFRDMDZmREJTXzFkTW1vcTJmfDQxZDI0QXdtdUlcQDcwQzQ8Sl88U2tUR1J3Q0FPRkBqZGEwMFViQ01sTnxIcFJ8VEcxPEk1MzxSdmQ0Xz1oS39qZl1ocjU1V0p2SFF1XDQnKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmY2NjY2NjJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl",\n  "wallet_options": null\n}' message='API response body'
+2026-03-20 06:58:16,724 - stripe - DEBUG - link=https://dashboard.stripe.com/live/logs/req_SFErQFtg3ziYwS message='Dashboard link for request'
+2026-03-20 06:58:17,330 - services.dossiers - INFO - Updated dossiers 5
+2026-03-20 06:58:17,331 - core.database - DEBUG - [DB_OP] Database session cleanup after 4.2994s
+2026-03-20 06:58:27,585 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 07:03:00,387 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-20 07:04:03,415 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-20 07:04:03,416 - core.database - INFO - Database connection closed and engine disposed
+2026-03-20 07:04:03,416 - services.database - INFO - Database connections closed
+2026-03-20 07:04:03,417 - services.database - DEBUG - [DB_OP] Database close completed in 0.0016s
