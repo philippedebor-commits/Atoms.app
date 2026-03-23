@@ -30,25 +30,27 @@ export default function PaymentSuccess() {
       }
 
       try {
-        const token = localStorage.getItem("token");
-        const headers: Record<string, string> = {
-          "Content-Type": "application/json",
-          "App-Host": window.location.host,
+        const fetchOpts = {
+          credentials: "include" as RequestCredentials,
+          headers: {
+            "Content-Type": "application/json",
+            "App-Host": window.location.host,
+          },
         };
-        if (token) headers["Authorization"] = `Bearer ${token}`;
 
         // Verify payment
         const verifyResponse = await fetch(
           `${getAPIBaseURL()}/api/v1/payment/verify_payment`,
           {
             method: "POST",
-            headers,
+            ...fetchOpts,
             body: JSON.stringify({ session_id: sessionId }),
           }
         );
 
         if (!verifyResponse.ok) {
           const errData = await verifyResponse.json().catch(() => ({}));
+          console.error("Payment verify error:", verifyResponse.status, errData);
           throw new Error(
             errData?.detail || `Erreur serveur (${verifyResponse.status})`
           );
@@ -69,13 +71,14 @@ export default function PaymentSuccess() {
           `${getAPIBaseURL()}/api/v1/prompt/generate`,
           {
             method: "POST",
-            headers,
+            ...fetchOpts,
             body: JSON.stringify({ dossier_id: dId }),
           }
         );
 
         if (!promptResponse.ok) {
           const errData = await promptResponse.json().catch(() => ({}));
+          console.error("Prompt generate error:", promptResponse.status, errData);
           throw new Error(
             errData?.detail || `Erreur serveur (${promptResponse.status})`
           );
@@ -90,7 +93,7 @@ export default function PaymentSuccess() {
           try {
             const dossierResponse = await fetch(
               `${getAPIBaseURL()}/api/v1/entities/dossiers/${dId}`,
-              { method: "GET", headers }
+              { method: "GET", ...fetchOpts }
             );
             if (dossierResponse.ok) {
               const dossierData = await dossierResponse.json();

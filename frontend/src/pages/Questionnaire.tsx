@@ -183,15 +183,14 @@ export default function Questionnaire() {
         return;
       }
 
-      // Create Stripe Checkout Session via backend API
-      const token = localStorage.getItem("token");
+      // Create Stripe Checkout Session via backend API (cookie-based auth)
       const paymentResponse = await fetch(
         `${getAPIBaseURL()}/api/v1/payment/create_payment_session`,
         {
           method: "POST",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
             "App-Host": window.location.host,
           },
           body: JSON.stringify({
@@ -204,6 +203,7 @@ export default function Questionnaire() {
 
       if (!paymentResponse.ok) {
         const errData = await paymentResponse.json().catch(() => ({}));
+        console.error("Payment session error:", paymentResponse.status, errData);
         throw new Error(
           errData?.detail || `Erreur serveur (${paymentResponse.status})`
         );
