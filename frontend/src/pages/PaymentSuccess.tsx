@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
-import { client } from "@/lib/api";
 import { getAPIBaseURL } from "@/lib/config";
 import { toast } from "sonner";
 import {
@@ -10,7 +9,7 @@ import {
   Loader2,
   FolderOpen,
   Home,
-  Phone,
+  FileText,
 } from "lucide-react";
 
 export default function PaymentSuccess() {
@@ -18,7 +17,6 @@ export default function PaymentSuccess() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
-  const [projectName, setProjectName] = useState("");
 
   useEffect(() => {
     const processPayment = async () => {
@@ -38,7 +36,7 @@ export default function PaymentSuccess() {
           },
         };
 
-        // Verify payment
+        // Step 1: Verify payment
         const verifyResponse = await fetch(
           `${getAPIBaseURL()}/api/v1/payment/verify_payment`,
           {
@@ -66,47 +64,23 @@ export default function PaymentSuccess() {
 
         const dId = verifyData.dossier_id;
 
-        // Generate prompt (this also auto-sends email to admin)
-        const promptResponse = await fetch(
-          `${getAPIBaseURL()}/api/v1/prompt/generate`,
-          {
-            method: "POST",
-            ...fetchOpts,
-            body: JSON.stringify({ dossier_id: dId }),
-          }
-        );
-
-        if (!promptResponse.ok) {
-          const errData = await promptResponse.json().catch(() => ({}));
-          console.error("Prompt generate error:", promptResponse.status, errData);
-          throw new Error(
-            errData?.detail || `Erreur serveur (${promptResponse.status})`
-          );
-        }
-
-        const promptData = await promptResponse.json();
-
-        if (promptData?.prompt) {
-          setSuccess(true);
-
-          // Fetch dossier to get project name
-          try {
-            const dossierResponse = await fetch(
-              `${getAPIBaseURL()}/api/v1/entities/dossiers/${dId}`,
-              { method: "GET", ...fetchOpts }
-            );
-            if (dossierResponse.ok) {
-              const dossierData = await dossierResponse.json();
-              if (dossierData?.project_name) {
-                setProjectName(dossierData.project_name);
-              }
+        // Step 2: Generate prompt + send to admin (prospect never sees the prompt)
+        try {
+          await fetch(
+            `${getAPIBaseURL()}/api/v1/prompt/generate`,
+            {
+              method: "POST",
+              ...fetchOpts,
+              body: JSON.stringify({ dossier_id: dId }),
             }
-          } catch {
-            // Non-critical, continue
-          }
-
-          toast.success("Votre demande a été enregistrée avec succès !");
+          );
+        } catch {
+          // Prompt generation error is non-blocking for the user
+          console.warn("Prompt generation request failed");
         }
+
+        setSuccess(true);
+        toast.success("Paiement confirmé ! Votre dossier sera préparé.");
       } catch (err: any) {
         const detail =
           err?.data?.detail ||
@@ -129,7 +103,7 @@ export default function PaymentSuccess() {
         <div className="pt-32 flex flex-col items-center justify-center gap-4">
           <Loader2 className="h-12 w-12 text-[#2D5016] animate-spin" />
           <p className="text-lg text-[#6B7280]">
-            Vérification du paiement et traitement de votre demande...
+            Vérification du paiement...
           </p>
         </div>
       </div>
@@ -149,35 +123,30 @@ export default function PaymentSuccess() {
                 <CheckCircle2 className="h-10 w-10 text-[#2D5016]" />
               </div>
               <h1 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-3">
-                Merci pour votre confiance !
+                Paiement confirmé !
               </h1>
               <p className="text-lg text-[#6B7280]">
-                Votre paiement a été confirmé avec succès
+                Merci pour votre confiance
               </p>
             </div>
 
-            {/* Confirmation Card */}
+            {/* Info Card */}
             <div className="bg-white rounded-2xl border border-[#E5E2D9] shadow-sm p-8 mb-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#F0FDF4] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="h-7 w-7 text-[#2D5016]" />
+                  <FileText className="h-7 w-7 text-[#2D5016]" />
                 </div>
                 <h2 className="text-xl font-semibold text-[#1A1A1A] mb-3">
-                  Votre dossier est en cours de traitement
+                  Votre dossier sera préparé
                 </h2>
-                {projectName && (
-                  <p className="text-[#2D5016] font-medium mb-4">
-                    Projet : {projectName}
-                  </p>
-                )}
-                <p className="text-[#6B7280] leading-relaxed mb-4">
-                  Notre équipe a bien reçu votre demande et vos informations.
-                  Nous allons préparer votre dossier d'avis préalable
-                  urbanistique et vous recontacterons dans les plus brefs délais.
+                <p className="text-[#6B7280] leading-relaxed mb-6">
+                  Notre équipe prépare votre dossier d'avis préalable
+                  urbanistique complet. Vous le recevrez par email dans les
+                  plus brefs délais.
                 </p>
                 <div className="bg-[#FAFAF5] rounded-xl p-4 text-sm text-[#6B7280]">
-                  <p className="font-medium text-[#1A1A1A] mb-1">
-                    Que se passe-t-il ensuite ?
+                  <p className="font-medium text-[#1A1A1A] mb-2">
+                    Prochaines étapes :
                   </p>
                   <ul className="space-y-2 text-left max-w-sm mx-auto">
                     <li className="flex items-start gap-2">
@@ -186,7 +155,7 @@ export default function PaymentSuccess() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#2D5016] font-bold">2.</span>
-                      Nous générons votre dossier complet via Gamma
+                      Nous générons votre dossier complet
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#2D5016] font-bold">3.</span>

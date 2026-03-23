@@ -1,0 +1,18 @@
+2026-03-23 13:05:34,158 - main - INFO - === Logging system initialized ===
+2026-03-23 13:05:34,158 - main - INFO - Log file: logs/app_20260323_130534.log
+2026-03-23 13:05:34,158 - main - INFO - Log level: INFO
+2026-03-23 13:05:34,158 - main - INFO - Timestamp: 20260323_130534
+2026-03-23 13:05:35,142 - main - INFO - Included router: routers.aihub.router
+2026-03-23 13:05:35,167 - main - INFO - Included router: routers.auth.router
+2026-03-23 13:05:35,294 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 13:05:35,301 - main - INFO - Included router: routers.health.router
+2026-03-23 13:05:35,384 - main - INFO - Included router: routers.payments.router
+2026-03-23 13:05:35,472 - main - INFO - Included router: routers.prompt.router
+2026-03-23 13:05:35,770 - main - INFO - Included router: routers.settings.router
+2026-03-23 13:05:35,858 - main - INFO - Included router: routers.storage.router
+2026-03-23 13:05:35,868 - main - INFO - Included router: routers.user.router
+2026-03-23 13:05:35,870 - main - INFO - === Application startup initiated ===
+2026-03-23 13:05:35,870 - services.database - INFO - Ignore creating tables
+2026-03-23 13:05:35,870 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 13:05:35,870 - services.auth - INFO - Ignore initialize admin
+2026-03-23 13:05:35,870 - main - INFO - === Application startup completed successfully ===

@@ -1,0 +1,27 @@
+2026-03-23 12:50:57,647 - main - INFO - === Logging system initialized ===
+2026-03-23 12:50:57,648 - main - INFO - Log file: logs/app_20260323_125057.log
+2026-03-23 12:50:57,648 - main - INFO - Log level: INFO
+2026-03-23 12:50:57,648 - main - INFO - Timestamp: 20260323_125057
+2026-03-23 12:50:58,347 - main - INFO - Included router: routers.aihub.router
+2026-03-23 12:50:58,368 - main - INFO - Included router: routers.auth.router
+2026-03-23 12:50:58,449 - main - INFO - Included router: routers.dossiers.router
+2026-03-23 12:50:58,451 - main - INFO - Included router: routers.health.router
+2026-03-23 12:50:58,477 - main - INFO - Included router: routers.payments.router
+2026-03-23 12:50:58,486 - main - INFO - Included router: routers.prompt.router
+2026-03-23 12:50:58,592 - main - INFO - Included router: routers.settings.router
+2026-03-23 12:50:58,626 - main - INFO - Included router: routers.storage.router
+2026-03-23 12:50:58,633 - main - INFO - Included router: routers.user.router
+2026-03-23 12:50:58,634 - main - INFO - === Application startup initiated ===
+2026-03-23 12:50:58,634 - services.database - INFO - Ignore creating tables
+2026-03-23 12:50:58,634 - services.mock_data - INFO - Ignore initialize data
+2026-03-23 12:50:58,634 - services.auth - INFO - Ignore initialize admin
+2026-03-23 12:50:58,635 - main - INFO - === Application startup completed successfully ===
+2026-03-23 12:51:02,334 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-03-23 12:51:02,335 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-03-23 12:51:02,351 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 12:51:37,350 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:02:15,455 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:02:40,852 - core.auth - DEBUG - Authentication token validated for user hash: a1f407af
+2026-03-23 13:05:32,409 - services.database - DEBUG - [DB_OP] Starting database close
+2026-03-23 13:05:32,409 - services.database - INFO - Database connections closed
+2026-03-23 13:05:32,411 - services.database - DEBUG - [DB_OP] Database close completed in 0.0017s

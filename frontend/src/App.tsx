@@ -6,6 +6,7 @@ import Index from './pages/Index';
 import AuthCallback from './pages/AuthCallback';
 import AuthError from './pages/AuthError';
 import Questionnaire from './pages/Questionnaire';
+import Confirmation from './pages/Confirmation';
 import PaymentSuccess from './pages/PaymentSuccess';
 import MyDossiers from './pages/MyDossiers';
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/auth/error" element={<AuthError />} />
           <Route path="/questionnaire" element={<Questionnaire />} />
+          <Route path="/confirmation/:dossierId" element={<Confirmation />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/mes-dossiers" element={<MyDossiers />} />
         </Routes>

@@ -166,13 +166,13 @@ export default function Questionnaire() {
         }
       }
 
-      // Create dossier
+      // Create dossier in DB
       const dossierRes = await client.entities.dossiers.create({
         data: {
           ...formData,
           file_key: fileKey,
           payment_status: "pending",
-          status: "draft",
+          status: "submitted",
           created_at: new Date().toISOString(),
         },
       });
@@ -183,39 +183,27 @@ export default function Questionnaire() {
         return;
       }
 
-      // Create Stripe Checkout Session via backend API (cookie-based auth)
-      const paymentResponse = await fetch(
-        `${getAPIBaseURL()}/api/v1/payment/create_payment_session`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            "App-Host": window.location.host,
-          },
-          body: JSON.stringify({
-            dossier_id: dossierId,
-            success_url: `${window.location.origin}/payment-success`,
-            cancel_url: `${window.location.origin}/questionnaire`,
-          }),
-        }
-      );
-
-      if (!paymentResponse.ok) {
-        const errData = await paymentResponse.json().catch(() => ({}));
-        console.error("Payment session error:", paymentResponse.status, errData);
-        throw new Error(
-          errData?.detail || `Erreur serveur (${paymentResponse.status})`
+      // Send prospect data email to admin (before payment)
+      try {
+        await fetch(
+          `${getAPIBaseURL()}/api/v1/prompt/send-prospect-email`,
+          {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              "App-Host": window.location.host,
+            },
+            body: JSON.stringify({ dossier_id: dossierId }),
+          }
         );
+      } catch {
+        // Email sending is non-critical, continue
+        console.warn("Prospect email could not be sent");
       }
 
-      const paymentData = await paymentResponse.json();
-      const url = paymentData?.url;
-      if (url) {
-        window.location.href = url;
-      } else {
-        toast.error("URL de paiement non reçue. Veuillez réessayer.");
-      }
+      toast.success("Vos données ont été envoyées avec succès !");
+      navigate(`/confirmation/${dossierId}`);
     } catch (err: any) {
       const detail =
         err?.data?.detail ||
@@ -816,10 +804,6 @@ export default function Questionnaire() {
                         : "—"}
                   </span>
                 </div>
-                <div className="flex justify-between py-2">
-                  <span className="text-[#6B7280]">Montant</span>
-                  <span className="font-bold text-[#2D5016] text-lg">125 €</span>
-                </div>
               </div>
             </div>
           </div>
@@ -903,11 +887,11 @@ export default function Questionnaire() {
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Traitement...
+                  Envoi en cours...
                 </>
               ) : (
                 <>
-                  Payer 125€ et générer
+                  Envoyer ma demande
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </>
               )}
